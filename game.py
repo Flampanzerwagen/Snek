@@ -224,7 +224,7 @@ def GAME_LOOP():
             
         scoreStr="SCORE: "+str(score)
         highscoreStr="HIGHSCORE: "+str(highscore)
-        Message(highscoreStr, white,20,screenWidth-100,10)
+        Message(highscoreStr, white,20,screenWidth-120,10)
         Message(scoreStr,white,20,10,10)
         Message("Press P to pause/unpause or Q to quit",white,20,10,screenHeight-20)
 
@@ -238,8 +238,17 @@ def GAME_LOOP():
     
         clock.tick(10)
         
-        if x >= screenWidth or x < 0 or y >= screenHeight or y < 0:
-            gameClosed = True
+        # if x >= screenWidth or x < 0 or y >= screenHeight or y < 0:
+        #     gameClosed = True
+        
+        if x >= block*width:
+            x = -block
+        elif x <= -block:
+            x = block*width
+        if y >= block*height:
+            y = -block
+        elif y <= -block:
+            y = block*height
 
     pygame.quit()
     exit()
