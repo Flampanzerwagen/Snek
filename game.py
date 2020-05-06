@@ -13,8 +13,8 @@ green = (0,255,0)
 cyan = (0,255,255)
 
 block=20
-width=40
-height=30
+width=20
+height=20
 screenWidth = block*width
 screenHeight = block*height
 
@@ -190,9 +190,19 @@ def GAME_LOOP():
         x += x_change
         y += y_change
         screen.fill(black)
+        
+        if x >= block*width:
+            x = 0
+        elif x <= -block:
+            x = block*width-block
+        if y >= block*height:
+            y = 0
+        elif y <= -block:
+            y = block*height-block
 
         updateBody(x,y,snakeBody,active)
-
+        print(snakeBody[0])
+        
         if snakeBody[0] in snakeBody[1:length]:
             gameClosed=True
 
@@ -237,18 +247,6 @@ def GAME_LOOP():
         pygame.display.update()
     
         clock.tick(10)
-        
-        # if x >= screenWidth or x < 0 or y >= screenHeight or y < 0:
-        #     gameClosed = True
-        
-        if x >= block*width:
-            x = -block
-        elif x <= -block:
-            x = block*width
-        if y >= block*height:
-            y = -block
-        elif y <= -block:
-            y = block*height
 
     pygame.quit()
     exit()
