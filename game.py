@@ -86,13 +86,16 @@ file.close()
 bg = pygame.mixer.Sound('knightmare.wav')
 greenSound = pygame.mixer.Sound('green.wav')
 
+wallsSaved = False
+godModeSaved = False
+
 def GAME_LOOP():    
     pygame.mixer.Channel(0).play(bg,-1)
     pygame.mixer.Channel(0).set_volume(0.1)
-    
-    
-    godMode=False
-    walls=False
+    global godModeSaved
+    global wallsSaved
+    godMode=godModeSaved
+    walls=wallsSaved
     difficultyChosen = False
     
     while difficultyChosen == False:
@@ -134,12 +137,17 @@ def GAME_LOOP():
                     difficultyChosen = True
                 elif event.key == pygame.K_5 and walls == True:
                     walls = False
+                    wallsSaved=False
                 elif event.key == pygame.K_5 and walls == False:
                     walls = True
+                    wallsSaved=True
                 elif event.key == pygame.K_6 and godMode == False:
                     godMode = True
+                    godModeSaved = True
                 elif event.key == pygame.K_6 and godMode == True:
                     godMode = False
+                    godModeSaved = True
+                    
 
         pygame.display.update()
 
