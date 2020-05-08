@@ -84,7 +84,7 @@ highscore=int(file.read())
 file.close()
 
 bg = pygame.mixer.Sound('knightmare.wav')
-greenSound = pygame.mixer.Sound('green.wav')
+greenSound = pygame.mixer.Sound('sound.wav')
 
 wallsSaved = False
 godModeSaved = False
