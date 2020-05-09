@@ -79,14 +79,14 @@ for x in range(width):
     for y in range(height):
         gridArray.append([x*block,y*block])
 
-file = open("highscore.txt","r")
+file = open("data/highscore.txt","r")
 highscore=int(file.read())
 file.close()
 
-bg = pygame.mixer.Sound('knightmare.wav')
-greenSound = pygame.mixer.Sound('sound.wav')
+bg = pygame.mixer.Sound('data/knightmare.wav')
+sound = pygame.mixer.Sound('data/sound.wav')
 
-wallsSaved = False
+wallsSaved = True
 godModeSaved = False
 
 def GAME_LOOP():    
@@ -154,7 +154,6 @@ def GAME_LOOP():
     pygame.mixer.Channel(0).set_volume(0.5)
     
     speed=difficulty*5
-    
 
     fruitColour=green
     lastCommand=0
@@ -305,30 +304,30 @@ def GAME_LOOP():
         if x==fruitWidth and y==fruitHeight:
             
             if fruitColour == green:
-                pygame.mixer.Channel(1).play(greenSound)
+                pygame.mixer.Channel(1).play(sound)
                 length+=1
                 score+=1
             elif fruitColour == cyan:
-                pygame.mixer.Channel(1).play(greenSound)
+                pygame.mixer.Channel(1).play(sound)
                 length+=5
                 score+=5
             elif fruitColour == pink:
-                pygame.mixer.Channel(1).play(greenSound)
+                pygame.mixer.Channel(1).play(sound)
                 length+=10
                 score+=10
             elif fruitColour == indigo:
-                pygame.mixer.Channel(1).play(greenSound)
+                pygame.mixer.Channel(1).play(sound)
                 length+=15
                 score+=15
             elif fruitColour == orange:
-                pygame.mixer.Channel(1).play(greenSound)
+                pygame.mixer.Channel(1).play(sound)
                 length+=20
                 score+=20
             if uniqueList(snakeBody)>=25:
                 randomFactor=random.randint(0,1000)
-                if randomFactor <= 750:
+                if randomFactor <= 800:
                     fruitColour=green
-                elif randomFactor <= 880:
+                elif randomFactor <= 900:
                     fruitColour=cyan
                 elif randomFactor <= 960:
                     fruitColour=pink
